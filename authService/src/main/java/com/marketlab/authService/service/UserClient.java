@@ -1,6 +1,6 @@
 package com.marketlab.authService.service;
 
-import com.marketlab.authService.dto.UserDto;
+import com.marketlab.authService.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,7 +13,7 @@ public class UserClient {
 
     private final WebClient userServiceWebClient;
 
-    public UserDto getUserByEmail(String email) {
+    public UserDTO getUserByEmail(String email) {
         return userServiceWebClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .path("/users/by-email")
@@ -23,7 +23,7 @@ public class UserClient {
                 .onStatus(HttpStatusCode::is4xxClientError, clientResponse -> {
                     throw new UsernameNotFoundException("User not found");
                 })
-                .bodyToMono(UserDto.class)
+                .bodyToMono(UserDTO.class)
                 .block();
     }
 }

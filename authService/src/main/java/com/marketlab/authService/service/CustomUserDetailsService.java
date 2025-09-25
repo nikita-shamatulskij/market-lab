@@ -1,7 +1,7 @@
 package com.marketlab.authService.service;
 
 
-import com.marketlab.authService.dto.UserDto;
+import com.marketlab.authService.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -20,11 +20,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserDto user = userClient.getUserByEmail(email);
+        UserDTO user = userClient.getUserByEmail(email);
 
         return new User(
                 user.email(),
-                user.passwordHash(),
+                user.password(),
                 List.of(new SimpleGrantedAuthority("ROLE_USER"))
         );
     }

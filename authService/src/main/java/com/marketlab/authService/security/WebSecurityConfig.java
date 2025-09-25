@@ -27,7 +27,7 @@ public class WebSecurityConfig {
         return http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/login").permitAll()
+                    .requestMatchers("/login", "/register").permitAll()
                     .anyRequest().authenticated())
             .logout(LogoutConfigurer::permitAll)
             .build();
