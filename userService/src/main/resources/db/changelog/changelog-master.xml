@@ -6,5 +6,5 @@
                         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <include file="changesets/init-user-table.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/refactor-user-table.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
