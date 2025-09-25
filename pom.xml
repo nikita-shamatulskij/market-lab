@@ -8,6 +8,12 @@
     <artifactId>market-lab</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>authService</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
     <properties>
         <maven.compiler.source>24</maven.compiler.source>
         <maven.compiler.target>24</maven.compiler.target>
