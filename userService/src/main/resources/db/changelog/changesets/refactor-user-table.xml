@@ -5,27 +5,18 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-    <changeSet id="refactor-user-table" author="nikita-shamatulskij">
+    <changeSet id="refactor-user-table-1" author="nikita-shamatulskij">
         <dropUniqueConstraint tableName="user" constraintName="uc_user_firstName"/>
         <dropUniqueConstraint tableName="user" constraintName="uc_user_middleName"/>
         <dropUniqueConstraint tableName="user" constraintName="uc_user_lastName"/>
+    </changeSet>
 
+    <changeSet id="refactor-user-table-2" author="nikita-shamatulskij">
         <dropNotNullConstraint tableName="user" columnName="middleName" columnDataType="VARCHAR(50)"/>
+    </changeSet>
 
+    <changeSet id="refactor-user-table-3" author="nikita-shamatulskij">
         <renameColumn tableName="user" oldColumnName="phone_number" newColumnName="phoneNumber" columnDataType="VARCHAR(20)"/>
-
-        <rollback>
-            <addUniqueConstraint tableName="user" columnNames="firstName" constraintName="uc_user_firstName"/>
-            <addUniqueConstraint tableName="user" columnNames="middleName" constraintName="uc_user_middleName"/>
-            <addUniqueConstraint tableName="user" columnNames="lastName" constraintName="uc_user_lastName"/>
-
-            <addNotNullConstraint tableName="user" columnName="middleName" columnDataType="VARCHAR(50)"/>
-
-            <renameColumn tableName="user" oldColumnName="phoneNumber" newColumnName="phone_number" columnDataType="VARCHAR(20)"/>
-        </rollback>
     </changeSet>
 
 </databaseChangeLog>
-
-
-
