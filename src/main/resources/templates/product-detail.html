@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${product.name} + ' - MarketLab'">Товар - MarketLab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .product-detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #000;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .product-gallery {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-info h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-section {
+            margin: 2rem 0;
+        }
+
+        .price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: #000;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .add-to-cart-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 2;
+        }
+
+        .wishlist-btn {
+            background: #f8f9fa;
+            color: #000;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .product-description, .product-specs {
+            margin: 2rem 0;
+        }
+
+        .product-description h3, .product-specs h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .product-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-specs li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <div class="brand-section">
+        <div class="slogan">"Tech Tested, Market Approved"</div>
+        <div class="marketlab-title">MARKETLAB</div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="#" class="nav-button" id="loginButton">
+            <div class="icon-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="black" style="width: 24px; height: 24px;">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+            </div>
+            <span class="button-text">Войти</span>
+        </a>
+
+        <a href="#" class="nav-button">
+            <div class="icon-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="black" style="width: 22px; height: 22px;">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+            </div>
+            <span class="button-text">Корзина</span>
+        </a>
+
+        <div class="nav-button" id="categoriesDropdown">
+            <div class="icon-square">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="black" style="width: 24px; height: 24px;">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </div>
+            <span class="button-text">Категории</span>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="product-detail-container">
+        <nav class="breadcrumb">
+            <a href="/">Главная</a> >
+            <span th:text="${product.name}">Товар</span>
+        </nav>
+
+        <div class="product-detail">
+            <div class="product-gallery">
+                <img th:src="${product.imageUrl}" th:alt="${product.name}" class="main-image">
+            </div>
+
+            <div class="product-info">
+                <h1 th:text="${product.name}">Название товара</h1>
+
+                <div class="price-section">
+                    <div class="price" th:text="${#numbers.formatDecimal(product.price, 1, 2, 'POINT') + ' ₽'}">
+                        0 ₽
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="add-to-cart-btn">Добавить в корзину</button>
+                    <button class="wishlist-btn">♥ В избранное</button>
+                </div>
+
+                <div class="product-description">
+                    <h3>Описание</h3>
+                    <p th:text="${product.description ?: 'Описание товара скоро появится'}">
+                        Описание товара
+                    </p>
+                </div>
+
+                <div class="product-specs">
+                    <h3>Характеристики</h3>
+                    <ul>
+                        <li><strong>Артикул:</strong> <span th:text="${product.article ?: '-'}">-</span></li>
+                        <li><strong>В наличии:</strong> <span th:text="(${product.stockQuantity} ?: 0) + ' шт.'">0 шт.</span></li>
+                        <li><strong>Продавец:</strong> MarketLab</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Модальные окна -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Вход в MARKETLAB</h2>
+            <span class="close">&times;</span>
+        </div>
+        <form class="login-form">
+            <input type="text" placeholder="Email или логин" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+        <div class="modal-links">
+            <a href="#">Создать аккаунт</a>
+        </div>
+    </div>
+</div>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Регистрация в MARKETLAB</h2>
+            <span class="close-register">&times;</span>
+        </div>
+        <form class="register-form" id="registerForm">
+            <input type="text" name="firstName" placeholder="Имя" required>
+            <input type="text" name="middleName" placeholder="Отчество">
+            <input type="text" name="lastName" placeholder="Фамилия" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <input type="tel" name="phoneNumber" placeholder="Номер телефона">
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <div class="modal-links">
+            <a href="#" class="switch-to-login">Уже есть аккаунт? Войти</a>
+        </div>
+    </div>
+</div>
+
+<!-- Сайдбар категорий -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<div class="categories-sidebar" id="categoriesSidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Категории</h3>
+        <button class="close-sidebar" id="closeSidebar">&times;</button>
+    </div>
+    <div class="sidebar-categories">
+        <a th:each="category : ${categories}"
+           th:href="@{/(categoryId=${category.id})}"
+           th:text="${category.name}"
+           class="sidebar-category">
+            Категория
+        </a>
+        <div class="sidebar-divider"></div>
+        <a href="/" class="sidebar-category sidebar-all-categories">🔄 Все товары</a>
+    </div>
+</div>
+
+<script src="/js/auth.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

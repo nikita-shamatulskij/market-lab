@@ -1,0 +1,20 @@
+<div th:fragment="content">
+    <h2 class="mb-4 text-center">Каталог товаров</h2>
+
+    <div id="product-list" class="row g-4 justify-content-center"></div>
+
+    <!-- Модальное окно для подробного просмотра -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Информация о товаре</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="productModalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/products.js}"></script>
+</div>

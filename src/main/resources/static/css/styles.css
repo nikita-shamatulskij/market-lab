@@ -1,0 +1,918 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    min-height: 100vh;
+}
+
+.header {
+    height: 100px;
+    background: linear-gradient(135deg, #000000 0%, #444444 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 0;
+    position: relative;
+    z-index: 1000;
+}
+
+.brand-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.slogan {
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.marketlab-title {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: opacity 0.3s;
+}
+
+.nav-button:hover {
+    opacity: 0.7;
+}
+
+.icon-square {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.button-text {
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+    padding: 1rem;
+}
+
+.search-container {
+    width: 1022px;
+    height: 61px;
+    border: 2px solid #000000;
+    background: rgba(194, 194, 194, 0.29);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.search-icon {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #7D7D7D;
+    width: 100%;
+}
+
+.search-input::placeholder {
+    color: #7D7D7D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 2rem;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.close {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 1rem;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.modal-links a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.modal-header h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.products-section {
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.product-card {
+    width: 260px;
+    height: 390px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.product-image {
+    width: 100%;
+    height: 245px;
+    overflow: hidden;
+}
+
+.product-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(390px - 245px);
+    justify-content: space-between;
+}
+
+
+.product-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.action-btn {
+    width: 24px;
+    height: 24px;
+    background: rgba(146, 121, 121, 0.100);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.action-btn:hover {
+    background: rgba(146, 121, 121, 1);
+}
+
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+    color: white;
+    stroke-width: 2;
+}
+
+
+.product-price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000;
+    text-align: right;
+    margin-top: 0.8rem;
+}
+
+
+.register-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+.register-form button {
+    width: 100%;
+    padding: 1rem;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0.5rem;
+}
+
+.switch-to-login {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.switch-to-login:hover {
+    text-decoration: underline;
+}
+
+.message {
+    padding: 0.8rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.categories-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    margin-top: 5px;
+    padding: 0.5rem 0;
+}
+
+.category-link {
+    display: block;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+}
+
+.category-link:hover {
+    background-color: #f5f5f5;
+}
+
+.menu-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 0.3rem 0;
+}
+
+.all-categories {
+    font-weight: 600;
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.categories-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+    z-index: 2000;
+    transition: right 0.3s ease;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+}
+
+.categories-sidebar.open {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-sidebar:hover {
+    color: #000;
+    background: #f5f5f5;
+    border-radius: 50%;
+}
+
+.sidebar-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidebar-category {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #333;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.sidebar-category:hover {
+    background: #f8f9fa;
+    color: #000;
+    transform: translateX(5px);
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: #e9ecef;
+    margin: 1rem 0;
+}
+
+.sidebar-all-categories {
+    font-weight: 700;
+    color: #000;
+    background: #f8f9fa;
+}
+
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+    display: none;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+
+.categories-menu {
+    display: none !important;
+}
+
+
+/* Стили для страницы товара */
+.product-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.breadcrumb {
+    margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #666;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #000;
+}
+
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.product-gallery {
+    position: sticky;
+    top: 2rem;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.product-info h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.price-section {
+    margin: 2rem 0;
+}
+
+.price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #000;
+}
+
+.product-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.add-to-cart-btn {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 2;
+}
+
+.wishlist-btn {
+    background: #f8f9fa;
+    color: #000;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.product-description, .product-specs {
+    margin: 2rem 0;
+}
+
+.product-description h3, .product-specs h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.product-specs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-specs li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+
+.profile-button {
+    position: relative;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: linear-gradient(135deg, #000000 0%, #444444 100%) !important;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    z-index: 1003;
+    margin-top: 8px;
+    opacity: 1 !important;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+
+.profile-menu.hidden {
+    display: none;
+}
+
+.profile-info {
+    padding: 12px 16px;
+    border-bottom: 1px solid #555;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 1);
+    color: white;
+}
+
+.profile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.profile-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.profile-menu li a:hover {
+    background: #927979 !important;
+    color: white !important;
+}
+
+.nav-buttons {
+    position: relative;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.profile-menu li a svg {
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+
+.no-results-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.products-grid .empty-category-message {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 500px;
+    grid-column: 1 / -1;
+}
+
+.products-grid .empty-category-message p {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.products-grid .empty-category-message small {
+    color: #777;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+.products-grid .back-button {
+    background: linear-gradient(135deg, #927979 0%, #000000 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+}
+
+.products-grid .back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+
+/* Стили для кнопки избранного */
+.wishlist-btn.favorite-active {
+    background: #e74c3c !important;
+}
+
+.wishlist-btn.favorite-active svg {
+    color: white;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.wishlist-btn:hover {
+    background: rgba(146, 121, 121, 1);
+}
+
+/* Обновленные стили для карточки товара */
+.product-card {
+    position: relative;
+}
+
+.product-card-inner {
+    position: relative;
+    height: 100%;
+}
+
+.product-actions {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Гарантия что меню профиля будет поверх всего */
+@media (min-width: 768px) {
+    .profile-menu {
+        z-index: 1003;
+    }
+
+    .header {
+        isolation: isolate;
+    }
+}
+
+/* Стили для страницы избранного */
+.favorites-section {
+    padding: 2rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.favorites-container {
+    width: 100%;
+}
+
+.favorites-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.empty-favorites {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.empty-favorites.hidden {
+    display: none;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.empty-favorites h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+.empty-favorites p {
+    font-family: 'Montserrat', sans-serif;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #333;
+    color: white;
+}
+
+.loading-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.login-prompt {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+.login-prompt h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.login-prompt p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+}
+
+.error-message h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+/* cart.css - Additional styles for cart functionality */
+.nav-button {
+    position: relative;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.icon-square {
+    position: relative;
+}
+
+/* Стили для кнопки корзины в карточке товара */
+.cart-btn {
+    transition: all 0.2s ease;
+}
+
+.cart-btn:hover {
+    color: #28a745;
+    transform: scale(1.1);
+}
+
+.cart-btn:active {
+    transform: scale(0.95);
+}
